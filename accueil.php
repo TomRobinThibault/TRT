@@ -30,40 +30,8 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-
-    <!-- Navbar horizontal -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <ul class="navbar-nav">
-        <?php
-        include("./inc/nav.inc.php");
-        ?>
-      </ul>
-
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-    </nav>
-
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <!-- Brand Logo -->
-      <a href="accueil.php" class="brand-link">
-        <span class="brand-text font-weight-light">Projet TRT</span>
-      </a>
-
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="page-item"><a href="#" class="page-link">Redirection Page</a></li>
-        </ul>
-      </nav>
-    </aside>
+    <?php include("./inc/nav.inc.php"); ?>
+    <?php include "./inc/sidebar.inc.php"; ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
