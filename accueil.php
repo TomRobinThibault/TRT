@@ -30,8 +30,10 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
+
+    <!-- navigations -->
     <?php include("./inc/nav.inc.php"); ?>
-    <?php include "./inc/sidebar.inc.php"; ?>
+    <?php include("./inc/sidebar.inc.php"); ?>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
