@@ -785,9 +785,9 @@
 <!-- AdminLTE App -->
 <script src="./js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script src="./js/demo.js"></script>
 <!-- Summernote -->
-<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+<script src="./js/summernote-bs4.min.js"></script>
 <script>
   $(function () {
     // Summernote
