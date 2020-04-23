@@ -34,9 +34,11 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <?php
-      include("./inc/nav.inc.php");
-      ?>
+      <ul>
+        <?php
+        include("./inc/nav.inc.php");
+        ?>
+      </ul>
     </nav>
     <!-- /.sidebar-menu -->
   </div>
