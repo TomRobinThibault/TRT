@@ -50,12 +50,12 @@
                         </div>
                         <table class="table">
                             <tr>
-                                <td>Numéro</td>
-                                <td>Auteur</td>
-                                <td>Titre</td>
-                                <td>Description</td>
-                                <td>Date de création</td>
-                                <td>Dernière modification</td>
+                                <td><u>Numéro</u></td>
+                                <td><u>Auteur</u></td>
+                                <td><u>Titre</u></td>
+                                <td><u>Description</u></td>
+                                <td><u>Date de création</u></td>
+                                <td><u>Dernière modification</u></td>
                             </tr>
                             <tr>
                                 <td>0026</td>
