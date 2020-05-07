@@ -1,7 +1,8 @@
 <!-- Navbar horizontal -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="accueil.php">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="../accueil.php">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="pages/postView.php">Posts</a></li>
         <li class="nav-item"><a class="nav-link" href="pages/login.php">Connexion</a></li>
     </ul>
     <form class="form-inline ml-3">
