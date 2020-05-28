@@ -1,64 +1,68 @@
+<?php
+    include "../tools/server.php";
+
+    if (isset($_SESSION['logged_user'])){
+        $user = $_SESSION['logged_user'];
+    }
+    if (isset($_GET['delogger'])){
+        Mysqldelog($mysql, $user, true, "../accueil.php");
+    }
+
+    if (isset($_POST["req_login"])){
+        
+        $user = $pwd = "";
+        
+        $user = filter_input(INPUT_POST, "user", FILTER_SANITIZE_STRING);
+        $pwd = filter_input(INPUT_POST, "pwd", FILTER_SANITIZE_STRING);
+        
+        $user = mysqli_real_escape_string($mysql, $user);
+        $pwd = mysqli_real_escape_string($mysql, $pwd);
+        
+        if (isMysqlEmailExist($mysql, $user)){
+            $user = getMysqlUserByEmail($mysql, $user);
+        }
+        
+        if (isMysqlUserExist($mysql, $user)){
+            if (isMysqlUserPassword($mysql, $user, $pwd)){
+                
+                $validate = "Connection reussi !";
+                
+                MysqlLoginUser($mysql, $user, true, "Admin/dashboard.php");
+            } else {
+                $errors = "Utilisateur ou mot de passe incorrecte ! ";
+            }
+        } else {
+            $errors = "Utilisateur ou mot de passe incorrecte ! ";
+        }
+    }
+?>
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | General Form Elements</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href=".././plugins/fontawesome-free/css/all.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href=".././css/adminlte.min.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
-
-<body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
-        <div class="card card-info">
-            <div class="card-header">
-                <h3 class="card-title">Se connecter</h3>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Se loger</title>
+        <link href="../css/admin/login.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <fieldset>
+            <div class="titre">
+                <h2>Se loger</h2>
             </div>
-            <!-- /.card-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
-                <div class="card-body">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                <label class="form-check-label" for="exampleCheck2">Remember me</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-info">Sign in</button>
-                    <button type="submit" class="btn btn-default float-right">Cancel</button>
-                </div>
-                <!-- /.card-footer -->
+            <?php if (isset($errors)) {echo '<p class="errors">'.$errors."</p>";} else if (isset($validate)) {echo '<p class="valid">'.$validate.'</p>';}?>
+            <form action="<?=$_SERVER['PHP_SELF']?>" method="POST">
+                <label for="user">Identifiant ou email :</label><br/>
+                <p>
+                    <input type="text" name="user" value="<?php if (isset($errors)) {echo $user;}?>" placeholder="Username" required="" />
+                </p>
+                <label for="pwd">Mot de passe :</label><br/>
+                <p>
+                    <input type="password" name="pwd" placeholder="Password" required="" />
+                </p>
+                <p>
+                    <input type="submit" name="req_login" value="Login" />
+                </p>
             </form>
-        </div>
-        <!-- /.card -->
-    </div>
-</body>
-
+            <a href="index.php">Retour a l'accueil</a>
+        </fieldset>
+    </body>
 </html>

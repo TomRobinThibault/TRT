@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Creepster|Eater|Oleo+Script+Swash+Caps|Rubik+Mono+One|Sansita');
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 100%;
+    font-family: 'Sansita', sans-serif;
+}
+fieldset {
+    width: 20rem;
+    height: auto;
+    border: 0.05rem solid black;
+    background-color: #cccccc;
+    margin: auto;
+}
+fieldset > .titre {
+    font-size: 2rem;
+    width: 20rem;
+    height: 3rem;
+    background-color: #999999;
+    border-bottom: 0.1rem solid black;
+    margin-bottom: 0.5rem;
+}
+fieldset > .titre > h2 {
+    margin-left: 0.5rem;
+}
+fieldset > form > label {
+    float: left;
+    margin-left: 1rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+}
+fieldset > form > p {
+    float: right;
+    width: auto;
+    margin: 0rem 0.95rem 0rem 0rem;
+}
+fieldset > form > p > input {
+    width: 18rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.05rem solid #666666;
+}
+fieldset > form >  p > input[type=submit]{
+    margin-top: 1.4rem;
+    background-color: #666666;
+    font-weight: bold;
+    margin-bottom: 0.95rem;
+}
+fieldset > .errors {
+    width: 18rem;
+    margin: 0rem auto 0rem auto;
+    text-align: center;
+    background-color: #990033;
+    border-radius: 1rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+}
+fieldset > .valid {
+    width: 18rem;
+    margin: 0rem auto 0rem auto;
+    text-align: center;
+    background-color: #006600;
+    border-radius: 1rem;
+    padding: 0.5rem 0rem 0.5rem 0rem;
+}
+fieldset > a {
+    float: left;
+    margin: 0rem 0rem 1rem 6.5rem;
+    text-decoration: none;
+    color: black;
+}
+fieldset > a:hover {
+    color: blue;
+}
