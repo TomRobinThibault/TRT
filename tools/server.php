@@ -275,3 +275,32 @@ function isMysqlModifChamp($mysql, $id, $var, $value){
 
     return $row[0] != $value;
 }
+
+
+/*
+ *
+ *
+ * Function Post
+ *
+ *
+ */
+function MysqlAddPost($mysql, $titrePost, $descPost, $identifiantUser){
+
+    $dateCreation = date("y/m/d H:i:s");
+
+    $idUser = getMysqlIdUserByUser($mysql, $identifiantUser);
+
+    mysqli_query($mysql, "INSERT INTO post(titrePost, descPost, dateCreation, dateLastUtilisation, idUser) VALUES ('".$titrePost."', '".$descPost."', '".$dateCreation."', '".$dateCreation."', '".$idUser."');");
+}
+function getMysqlPosts($mysql){
+    $result = mysqli_query($mysql, "SELECT * FROM post;");
+
+    $ret = array();
+
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $ret[$i] = $row;
+        $i+=1;
+    }
+    return $ret;
+}
