@@ -1,3 +1,6 @@
+<?php 
+require "./tools/server.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -119,24 +122,16 @@
   $tbxDesc = filter_input(INPUT_POST, "tbxDesc", FILTER_SANITIZE_STRING);
   $btnPublier = filter_input(INPUT_POST, "btnPublier", FILTER_VALIDATE_BOOLEAN);
 
-  $contenuPost = array(
-    "idPost" => 0,
-    "titrePost" => null,
-    "descPost" => null,
-    "dateCreation" => null,
-    "dateLastModification" => null
-  );
   if (isset($btnPublier) && empty($tbxTitre) && empty($tbxDesc))
     echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner les champs titre et descritpion'; </script>";
   else if (isset($btnPublier) && empty($tbxTitre) && !empty($tbxDesc))
     echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner le champs titre'; </script>";
   else if (isset($btnPublier) && !empty($tbxTitre) && empty($tbxDesc))
     echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner le champs descritpion'; </script>";
-  else if (isset($btnPublier) && !empty($tbxTitre) && !empty($tbxDesc)) {
-    foreach ($contenuPost as $value) {
-      $value["titrePost"] = $_POST["tbxTitre"];
-      $value["descPost"] = $_POST["tbxDesc"];
-    }
+  else if (isset($btnPublier) && !empty($tbxTitre) && !empty($tbxDesc)){
+      MysqlAddPost($mysql, $_POST["tbxTitre"], $_POST["tbxDesc"], $identifiantUser);
+      echo "<script>document.getElementById('error').style.color = 'green' </script>";
+      echo "<script>document.getElementById('error').innerHTML = 'Votre post à bien été publié' </script>";
   }
   ?>
 
