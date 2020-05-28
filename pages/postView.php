@@ -51,20 +51,38 @@
                         <table class="table">
                             <tr>
                                 <td><u>Numéro</u></td>
-                                <td><u>Auteur</u></td>
                                 <td><u>Titre</u></td>
                                 <td><u>Description</u></td>
                                 <td><u>Date de création</u></td>
                                 <td><u>Dernière modification</u></td>
                             </tr>
-                            <tr>
-                                <td>0026</td>
-                                <td>LABORDE Robin</td>
-                                <td>Qu'est ce qui est jaune et qui attend</td>
-                                <td>tel est la question</td>
-                                <td>07 mai 2020</td>
-                                <td>07 mai 2020</td>
-                            </tr>
+                            <?php
+                            $recupPost = array(
+                                array(
+                                    "idPost" => "1",
+                                    "titrePost" => "Mes vacances en Espagne",
+                                    "descPost" => "Voici une photo de mes vacances en Espagne cet été",
+                                    "dateCreation" => "25.05.2020",
+                                    "dateLastModification" => "28.05.2020"
+                                ), array(
+                                    "idPost" => "2",
+                                    "titrePost" => "Jure wola ?",
+                                    "descPost" => "si si je te jure",
+                                    "dateCreation" => "10.10.2010",
+                                    "dateLastModification" => "26.01.2003"
+                                )
+                            );
+
+                            foreach ($recupPost as $value) {
+                                echo "<tr>";
+                                echo "<td>" . $value['idPost'] . "</td>";
+                                echo "<td>" . $value['titrePost'] . "</td>";
+                                echo "<td>" . $value['descPost'] . "</td>";
+                                echo "<td>" . $value['dateCreation'] . "</td>";
+                                echo "<td>" . $value['dateLastModification'] . "</td>";
+                                echo "</tr>";
+                            }
+                            ?>
                         </table>
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
