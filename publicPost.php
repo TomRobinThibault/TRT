@@ -18,8 +18,9 @@
   <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- css page -->
+  <link rel="stylesheet" href="./css/publicPost.css">
 
-  <link rel="stylesheet" href="./css/PublicPost.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -59,10 +60,13 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body pad">
+              <p id="error"></p>
               <div class="mb-3">
-                <input type="text" class="title" placeholder="Titre" />
-                <textarea class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                <button type="submit" id="btnPublier" name="btnPublier" class="btn btn-primary">Publier</button>
+                <form method="POST" action="publicPost.php">
+                  <input type="text" name="tbxTitre" class="title" placeholder="Titre" />
+                  <textarea name="tbxDesc" class="textarea" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <input type="submit" value="Publier" id="btnPublier" name="btnPublier" class="btn btn-primary" />
+                </form>
               </div>
               <p class="text-sm mb-0">
                 Editor <a href="https://github.com/bootstrap-wysiwyg/bootstrap3-wysiwyg">Documentation and license
@@ -110,11 +114,30 @@
       $('.textarea').summernote()
     })
   </script>
-
   <?php
+  $tbxTitre = filter_input(INPUT_POST, "tbxTitre", FILTER_SANITIZE_STRING);
+  $tbxDesc = filter_input(INPUT_POST, "tbxDesc", FILTER_SANITIZE_STRING);
+  $btnPublier = filter_input(INPUT_POST, "btnPublier", FILTER_VALIDATE_BOOLEAN);
 
-  if (isset($_POST["btnPublier"]))
-    echo "oui";
+  $contenuPost = array(
+    "idPost" => 0,
+    "titrePost" => null,
+    "descPost" => null,
+    "dateCreation" => null,
+    "dateLastModification" => null
+  );
+  if (isset($btnPublier) && empty($tbxTitre) && empty($tbxDesc))
+    echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner les champs titre et descritpion'; </script>";
+  else if (isset($btnPublier) && empty($tbxTitre) && !empty($tbxDesc))
+    echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner le champs titre'; </script>";
+  else if (isset($btnPublier) && !empty($tbxTitre) && empty($tbxDesc))
+    echo "<script>document.getElementById('error').innerHTML = 'Veuillez renseigner le champs descritpion'; </script>";
+  else if (isset($btnPublier) && !empty($tbxTitre) && !empty($tbxDesc)) {
+    foreach ($contenuPost as $value) {
+      $value["titrePost"] = $_POST["tbxTitre"];
+      $value["descPost"] = $_POST["tbxDesc"];
+    }
+  }
   ?>
 
 </body>
