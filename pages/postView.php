@@ -1,5 +1,5 @@
 <?php
-
+require("../tools/server.php");
 ?>
 
 <!DOCTYPE html>
@@ -57,22 +57,7 @@
                                 <td><u>Dernière modification</u></td>
                             </tr>
                             <?php
-                            $recupPost = array(
-                                array(
-                                    "idPost" => "1",
-                                    "titrePost" => "Mes vacances en Espagne",
-                                    "descPost" => "Voici une photo de mes vacances en Espagne cet été",
-                                    "dateCreation" => "25.05.2020",
-                                    "dateLastModification" => "28.05.2020"
-                                ), array(
-                                    "idPost" => "2",
-                                    "titrePost" => "Jure wola ?",
-                                    "descPost" => "si si je te jure",
-                                    "dateCreation" => "10.10.2010",
-                                    "dateLastModification" => "26.01.2003"
-                                )
-                            );
-
+                            $recupPost = getMysqlPosts($mysql);
                             foreach ($recupPost as $value) {
                                 echo "<tr>";
                                 echo "<td>" . $value['idPost'] . "</td>";
