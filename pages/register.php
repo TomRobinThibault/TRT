@@ -89,7 +89,7 @@ if (isset($_POST["req_register"])) {
                     <input type="submit" name="req_register" value="S'enregistrer" />
                 </p>
             </form>
-            <a href="index.php">Retour a l'accueil</a>
+            <a href="../">Retour a l'accueil</a>
         </fieldset>
     </body>
 </html>

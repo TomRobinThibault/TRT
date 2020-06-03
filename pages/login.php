@@ -5,7 +5,7 @@
         $user = $_SESSION['logged_user'];
     }
     if (isset($_GET['delogger'])){
-        Mysqldelog($mysql, $user, true, "../accueil.php");
+        Mysqldelog($mysql, $user, true, "../index.php");
     }
 
     if (isset($_POST["req_login"])){
@@ -62,7 +62,7 @@
                     <input type="submit" name="req_login" value="Login" />
                 </p>
             </form>
-            <a href="index.php">Retour a l'accueil</a>
+            <a href="../index.php">Retour a l'accueil</a>
         </fieldset>
     </body>
 </html>

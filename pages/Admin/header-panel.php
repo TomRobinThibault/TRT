@@ -14,7 +14,7 @@ $c = basename($_SERVER["PHP_SELF"]);
 <link href="../../css/admin/dashboard.css" rel="stylesheet" type="text/css"/>
 <header class="header-panel">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard.php">TRT</a>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="dashboard.php">ADMIN TRT</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="../login.php?delogger">Se delogger</a>
@@ -30,6 +30,12 @@ $c = basename($_SERVER["PHP_SELF"]);
                             <a class="nav-link <?php echo isCurrentPage($c, "dashboard.php"); ?>" href="dashboard.php">
                                 <span data-feather="home"></span>
                                 Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../">
+                                <span data-feather="home"></span>
+                                Panel TRT <span class="sr-only">(current)</span>
                             </a>
                         </li>
                     </ul>

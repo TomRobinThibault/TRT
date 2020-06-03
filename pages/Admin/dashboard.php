@@ -3,7 +3,7 @@ include '../../tools/server.php';
 if (isset($_SESSION["logged_user"])) {
     kickNoAccessPage($mysql, $_SESSION["logged_user"], "admin.panel.access");
 } else {
-    header("Location: ../../../accueil.php");
+    header("Location: ../../index.php");
 }
 ?>
 <html>

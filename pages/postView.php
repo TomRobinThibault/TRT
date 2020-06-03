@@ -34,10 +34,87 @@ require("../tools/server.php");
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="../" class="brand-link">
+                <span class="brand-text font-weight-light">Panel TRT</span>
+            </a>
 
-        <!-- navigations -->
-        <?php include("../inc/nav.inc.php"); ?>
-        <?php include("../inc/sidebar.inc.php"); ?>
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="info">
+                        <a href="#" class="d-block"><?php if (isset($_SESSION["logged_user"])) { echo $_SESSION["logged_user"];} else { echo "Visiteur"; } ?></a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        <li class="nav-header">ADMINISTRATION</li>
+                        <li class="nav-item has-treeview">
+                            <a href="Admin/dashboard.php" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    DashBoard
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="login.php" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Connexion
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="register.php" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    S'enregistrer
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                             with font-awesome or any other icon font library -->
+                        <li class="nav-header">POSTS</li>
+                        <li class="nav-item has-treeview">
+                            <a href="publicPost.php" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Publier
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="postView.php" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Voir
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Navbar horizontal -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" href="postView.php">Posts</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.php">Connexion</a></li>
+                <li class="nav-item"><a class="nav-link" href="login.php?delogger">Deconnexion</a></li>
+            </ul>
+        </nav>
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -80,10 +157,10 @@ require("../tools/server.php");
 
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <strong>Copyright &copy; 2020-2020 Adrivet Tom, Capt Thibault, Laborde Robin </strong>
+    <strong>Copyright &copy; 2020-2020 Andrivet Tom, Capt Thibault, Laborde Robin </strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.0.1
+        <b>Version</b> 1.0.0
     </div>
 </footer>
 

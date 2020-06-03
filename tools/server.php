@@ -73,7 +73,7 @@ function viewMysqlAllowedButton($mysql, $user, $code, $buttoncode) {
 }
 function kickNoAccessPage($mysql, $user, $code){
     if (!asPermission($mysql, $user, $code)){
-        header("Location: ../../accueil.php");
+        header("Location: ../../index.php");
     }
 }
 function kickNoAccessPageArray($mysql, $user, $array){
@@ -290,7 +290,7 @@ function MysqlAddPost($mysql, $titrePost, $descPost, $identifiantUser){
 
     $idUser = getMysqlIdUserByUser($mysql, $identifiantUser);
 
-    mysqli_query($mysql, "INSERT INTO post(titrePost, descPost, dateCreation, dateLastUtilisation, idUser) VALUES ('".$titrePost."', '".$descPost."', '".$dateCreation."', '".$dateCreation."', '".$idUser."');");
+    mysqli_query($mysql, "INSERT INTO post(titrePost, descPost, dateCreation, dateLastModification, idUser) VALUES ('".$titrePost."', '".$descPost."', '".$dateCreation."', '".$dateCreation."', '".$idUser."');");
 }
 function getMysqlPosts($mysql){
     $result = mysqli_query($mysql, "SELECT * FROM post;");
